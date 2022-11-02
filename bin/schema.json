@@ -1,0 +1,29 @@
+[
+    {
+        "database": "book",
+        "index": "book",
+        "nodes": {
+            "table": "book",
+            "columns": [
+                "isbn",
+                "title",
+                "description"
+            ],
+            "children": [
+                {
+                    "table": "author",
+                    "columns": [
+                        "id", "name"
+                    ],
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object",
+                        "through_tables": [
+                            "book_author"
+                        ]
+                    }
+                 }
+            ]
+        }
+    }
+]
