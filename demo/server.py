@@ -2,7 +2,6 @@
 from aiohttp import web
 from app.main import create_app
 
-
 def main():
     """PGSync Demo Webserver."""
     app = create_app()

@@ -1,29 +1,225 @@
 [
     {
-        "database": "book",
-        "index": "book",
+        "database": "voice-analytics-2",
+        "index": "ringsense-teams-03-11-2022",
+        "mapping": {
+            "users": {
+                "type": "nested"
+            }
+        },
         "nodes": {
-            "table": "book",
+            "table": "teams",
             "columns": [
-                "isbn",
-                "title",
-                "description"
+                "id",
+                "organization_id",
+                "name",
+                "description",
+                "created_by",
+                "created_at",
+                "updated_at",
+                "updated_by"
             ],
             "children": [
                 {
-                    "table": "author",
+                    "table": "users",
                     "columns": [
-                        "id", "name"
+                        "id",
+                        "rc_account_id",
+                        "rc_extension_id",
+                        "crm_data",
+                        "job_title",
+                        "first_name",
+                        "last_name",
+                        "email",
+                        "rc_data",
+                        "organization_id",
+                        "uri",
+                        "avatar_url",
+                        "is_organization_admin",
+                        "is_super_user",
+                        "created_by",
+                        "created_at",
+                        "updated_at",
+                        "updated_by",
+                        "manager_id",
+                        "time_zone",
+                        "location",
+                        "locale",
+                        "spoken_languages",
+                        "phone",
+                        "extension",
+                        "is_active",
+                        "status",
+                        "is_deleted",
+                        "integrations",
+                        "professional_seat"
                     ],
+                    "label": "users",
                     "relationship": {
                         "type": "one_to_many",
                         "variant": "object",
                         "through_tables": [
-                            "book_author"
+                            "teams_users"
                         ]
                     }
-                 }
+                }
+            ]
+        }
+    },
+    {
+        "database": "voice-analytics-2",
+        "index": "ringsense-users-03-11-2022",
+        "mapping": {
+            "teams": {
+                "type": "nested"
+            },
+            "roles": {
+                "type": "nested"
+            }
+        },
+        "nodes": {
+            "table": "users",
+            "columns": [
+                "id",
+                "rc_account_id",
+                "rc_extension_id",
+                "crm_data",
+                "job_title",
+                "first_name",
+                "last_name",
+                "email",
+                "rc_data",
+                "organization_id",
+                "uri",
+                "avatar_url",
+                "is_organization_admin",
+                "is_super_user",
+                "created_by",
+                "created_at",
+                "updated_at",
+                "updated_by",
+                "manager_id",
+                "time_zone",
+                "location",
+                "locale",
+                "spoken_languages",
+                "phone",
+                "extension",
+                "is_active",
+                "status",
+                "is_deleted",
+                "integrations",
+                "professional_seat"
+            ],
+            "children": [
+                {
+                    "table": "teams",
+                    "columns": [
+                        "id",
+                        "organization_id",
+                        "name",
+                        "description",
+                        "created_by",
+                        "created_at",
+                        "updated_at",
+                        "updated_by"
+                    ],
+                    "label": "teams",
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object",
+                        "through_tables": [
+                            "teams_users"
+                        ]
+                    }
+                },
+                {
+                    "table": "roles",
+                    "columns": [
+                        "id",
+                        "name",
+                        "organization_id",
+                        "permissions",
+                        "description",
+                        "created_by",
+                        "created_at",
+                        "updated_at",
+                        "updated_by"
+                    ],
+                    "label": "roles",
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object",
+                        "through_tables": [
+                            "roles_users"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "database": "voice-analytics-2",
+        "index": "ringsense-roles-03-11-2022",
+        "nodes": {
+            "table": "roles",
+            "columns": [
+                "id",
+                "name",
+                "organization_id",
+                "permissions",
+                "description",
+                "created_by",
+                "created_at",
+                "updated_at",
+                "updated_by"
+            ],
+            "children": [
+                {
+                    "table": "users",
+                    "columns": [
+                        "id",
+                        "rc_account_id",
+                        "rc_extension_id",
+                        "crm_data",
+                        "job_title",
+                        "first_name",
+                        "last_name",
+                        "email",
+                        "rc_data",
+                        "organization_id",
+                        "uri",
+                        "avatar_url",
+                        "is_organization_admin",
+                        "is_super_user",
+                        "created_by",
+                        "created_at",
+                        "updated_at",
+                        "updated_by",
+                        "manager_id",
+                        "time_zone",
+                        "location",
+                        "locale",
+                        "spoken_languages",
+                        "phone",
+                        "extension",
+                        "is_active",
+                        "status",
+                        "is_deleted",
+                        "integrations",
+                        "professional_seat"
+                    ],
+                    "label": "users",
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object",
+                        "through_tables": [
+                            "roles_users"
+                        ]
+                    }
+                }
             ]
         }
     }
 ]
+

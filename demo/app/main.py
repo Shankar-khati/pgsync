@@ -3,6 +3,7 @@ import aiohttp_cors
 from aiohttp import web
 from app import settings
 from app.views import TypeAheadView
+from dotenv import load_dotenv
 
 
 async def create_app():
@@ -36,4 +37,5 @@ async def create_app():
 
 
 if __name__ == "__main__":
+    load_dotenv(".env")
     app = create_app()
